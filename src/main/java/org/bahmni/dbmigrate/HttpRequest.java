@@ -9,19 +9,27 @@ import java.io.IOException;
 
 public class HttpRequest {
 
-    private String uri;
+    private OpenmrsDataProperties properties;
 
-    public HttpRequest(String uri) {
-        this.uri = uri;
+    public HttpRequest(OpenmrsDataProperties properties) {
+        this.properties = properties;
     }
 
-    public void post(String postContent) throws IOException {
-        Response execute = Request.Post(uri)
+    public void post(String relativeUrl, String postContent) throws IOException {
+        Response execute = Request.Post(properties.getOpenmrsUrl() + relativeUrl)
                 .addHeader("Content-Type", "application/json")
                 .addHeader("Accept", "application/json")
-                .addHeader("Authorization", "Basic " + new String(Base64.encodeBase64("admin:Hello123".getBytes())))
+                .addHeader("Authorization", basicAuthHeader())
                 .bodyString(postContent, ContentType.APPLICATION_JSON)
                 .execute();
         System.out.println(execute.returnContent().asString());
+    }
+
+    private String basicAuthHeader() {
+        return "Basic " + new String(Base64.encodeBase64(identity()));
+    }
+
+    private byte[] identity() {
+        return (properties.getOpenmrsUser() + ":" + properties.getOpenmrsPassword()).getBytes();
     }
 }

@@ -13,8 +13,8 @@ INSERT INTO visit_type (name, description, creator, uuid, date_created) VALUES (
 
 INSERT INTO encounter_type (name, description, creator, date_created, uuid) VALUES ('REG', 'Registration encounter', 1, curdate(), uuid());
 
-INSERT INTO patient_identifier_type (name, description, creator, date_created, required, uuid, uniqueness_behavior)
-  VALUES ('JSS', 'New patient identifier type created for use by the Bahmni Registration System', 1, curdate(), 1, uuid(), 'UNIQUE');
+INSERT INTO patient_identifier_type (name, description, creator, date_created, required, uuid, location_behavior)
+  VALUES ('JSS', 'New patient identifier type created for use by the Bahmni Registration System', 1, curdate(), 1, uuid(), 'NOT_USED');
 
 SET @patient_identifier := LAST_INSERT_ID();
 

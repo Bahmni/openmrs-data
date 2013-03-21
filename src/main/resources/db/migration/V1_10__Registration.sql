@@ -1,5 +1,4 @@
 -- All patient attributes required
-INSERT INTO person_attribute_type (name, description, format, searchable, creator, date_created, retired, sort_weight, uuid) VALUES ('oldPatientIdentifier', 'Old Patient Identifier', 'java.lang.String', '1', 1, curdate(), 0, 1, uuid());
 INSERT INTO person_attribute_type (name, description, format, searchable, creator, date_created, retired, sort_weight, uuid) VALUES ('caste', 'Caste', 'java.lang.String', '1', 1, curdate(), 0, 2, uuid());
 INSERT INTO person_attribute_type (name, description, format, searchable, creator, date_created, retired, sort_weight, uuid) VALUES ('education', 'Education', 'java.lang.String', '1', 1, curdate(), 0, 3, uuid());
 INSERT INTO person_attribute_type (name, description, format, searchable, creator, date_created, retired, sort_weight, uuid) VALUES ('occupation', 'Occupation', 'java.lang.String', '1', 1, curdate(), 0, 4, uuid());

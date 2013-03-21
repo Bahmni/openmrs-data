@@ -55,7 +55,7 @@ INSERT INTO location (name, description, creator, date_created, uuid)
   VALUES ('Semariya', 'Semariya subcentre', 1, curdate(), uuid());
 SET @lastlocation = last_insert_id();
 INSERT INTO location_attribute (location_id, attribute_type_id, value_reference, uuid, creator, date_created)
-  (SELECT  @lastlocation, location_attribute_type_id, 'GAN', uuid(), 1, curdate()
+  (SELECT  @lastlocation, location_attribute_type_id, 'SEM', uuid(), 1, curdate()
    FROM location_attribute_type
    WHERE name = 'IdentifierSourceName');
 
@@ -63,7 +63,7 @@ INSERT INTO location (name, description, creator, date_created, uuid)
   VALUES ('Shivtarai', 'Shivtarai subcentre', 1, curdate(), uuid());
 SET @lastlocation = last_insert_id();
 INSERT INTO location_attribute (location_id, attribute_type_id, value_reference, uuid, creator, date_created)
-  (SELECT  @lastlocation, location_attribute_type_id, 'GAN', uuid(), 1, curdate()
+  (SELECT  @lastlocation, location_attribute_type_id, 'SHI', uuid(), 1, curdate()
    FROM location_attribute_type
    WHERE name = 'IdentifierSourceName');
 
@@ -71,6 +71,6 @@ INSERT INTO location (name, description, creator, date_created, uuid)
   VALUES ('Bahmni', 'Bahmni subcentre', 1, curdate(), uuid());
 SET @lastlocation = last_insert_id();
 INSERT INTO location_attribute (location_id, attribute_type_id, value_reference, uuid, creator, date_created)
-  (SELECT  @lastlocation, location_attribute_type_id, 'GAN', uuid(), 1, curdate()
+  (SELECT  @lastlocation, location_attribute_type_id, 'BAH', uuid(), 1, curdate()
    FROM location_attribute_type
    WHERE name = 'IdentifierSourceName');

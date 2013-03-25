@@ -15,8 +15,9 @@ public class V1_11__Registration implements JavaMigration {
         http.post("/concept", ConceptJson.createConcept("REGISTRATION FEES", ConceptDataType.Numeric, ConceptClass.Misc));
         http.post("/concept", ConceptJson.createConcept("HEIGHT", ConceptDataType.Numeric, ConceptClass.Test));
         http.post("/concept", ConceptJson.createConcept("WEIGHT", ConceptDataType.Numeric, ConceptClass.Test));
+        http.post("/concept", ConceptJson.createConcept("BMI", ConceptDataType.Numeric, ConceptClass.Test));
 
-        http.post("/concept", ConceptJson.createConcept("REGISTRATION_CONCEPTS", ConceptDataType.Numeric, ConceptClass.Test ,
-                new ArrayList<String>(Arrays.asList("CHIEF COMPLAINT", "REGISTRATION FEES", "HEIGHT", "WEIGHT"))));
+        http.post("/concept", ConceptJson.createConcept("REGISTRATION_CONCEPTS", ConceptDataType.NA, ConceptClass.ConvSet ,
+                new ArrayList<>(Arrays.asList("CHIEF COMPLAINT", "REGISTRATION FEES", "HEIGHT", "WEIGHT", "BMI"))));
     }
 }

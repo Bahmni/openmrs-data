@@ -1,0 +1,40 @@
+<project name="openmrs-data" default="db.info" xmlns:flyway="antlib:com.googlecode.flyway.ant" basedir=".">
+    <path id="flyway.lib.path">
+        <fileset dir="${basedir}/lib">
+            <include name="*.jar"/>
+        </fileset>
+    </path>
+
+    <path id="flyway.classpath">
+        <fileset dir="${basedir}/lib">
+            <include name="openmrs-data-1.0.jar"/>
+        </fileset>
+    </path>
+
+    <taskdef uri="antlib:com.googlecode.flyway.ant"
+             resource="com/googlecode/flyway/ant/antlib.xml"
+             classpathref="flyway.lib.path"/>
+
+    <property file="${basedir}/conf/flyway.properties"></property>
+
+    <target name="db.migrate">
+        <echo message="${flyway.url}"></echo>
+        <flyway:migrate>
+            <locations>
+                <location path="db.migration"/>
+            </locations>
+        </flyway:migrate>
+    </target>
+
+    <target name="db.init">
+        <flyway:init/>
+    </target>
+
+    <target name="db.info">
+        <flyway:info/>
+    </target>
+
+    <target name="db.repair">
+        <flyway:repair/>
+    </target>
+</project>

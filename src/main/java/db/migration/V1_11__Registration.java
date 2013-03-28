@@ -1,15 +1,15 @@
 package db.migration;
 
-import com.googlecode.flyway.core.migration.java.JavaMigration;
+import com.googlecode.flyway.core.api.migration.jdbc.JdbcMigration;
 import org.bahmni.dbmigrate.*;
-import org.springframework.jdbc.core.JdbcTemplate;
 
+import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class V1_11__Registration implements JavaMigration {
+public class V1_11__Registration implements JdbcMigration {
 
-    public void migrate(JdbcTemplate jdbcTemplate) throws Exception {
+    public void migrate(Connection connection) throws Exception {
         HttpRequest http = new HttpRequest(new OpenmrsDataProperties());
         http.post("/concept", ConceptJson.createConcept("CHIEF COMPLAINT", ConceptDataType.Text, ConceptClass.Symptom));
         http.post("/concept", ConceptJson.createConcept("REGISTRATION FEES", ConceptDataType.Numeric, ConceptClass.Misc));

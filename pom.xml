@@ -115,7 +115,7 @@
                     </execution>
                     <execution>
                         <id>create-zip</id>
-                        <phase>install</phase>
+                        <phase>package</phase>
                         <goals>
                             <goal>run</goal>
                         </goals>

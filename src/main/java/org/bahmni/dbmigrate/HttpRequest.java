@@ -9,14 +9,14 @@ import java.io.IOException;
 
 public class HttpRequest {
 
-    private OpenmrsDataProperties properties;
+    private OpenMRSDataProperties properties;
 
-    public HttpRequest(OpenmrsDataProperties properties) {
+    public HttpRequest(OpenMRSDataProperties properties) {
         this.properties = properties;
     }
 
     public void post(String relativeUrl, String postContent) throws IOException {
-        Response execute = Request.Post(properties.getOpenmrsUrl() + relativeUrl)
+        Response execute = Request.Post(properties.getOpenMRSUrl() + relativeUrl)
                 .addHeader("Content-Type", "application/json")
                 .addHeader("Accept", "application/json")
                 .addHeader("Authorization", basicAuthHeader())
@@ -30,6 +30,6 @@ public class HttpRequest {
     }
 
     private byte[] identity() {
-        return (properties.getOpenmrsUser() + ":" + properties.getOpenmrsPassword()).getBytes();
+        return (properties.getOpenMRSUser() + ":" + properties.getOpenMRSPassword()).getBytes();
     }
 }

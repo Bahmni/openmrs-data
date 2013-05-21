@@ -58,7 +58,7 @@
                 <configuration>
                     <url>jdbc:mysql://localhost:3306/openmrs</url>
                     <driver>com.mysql.jdbc.Driver</driver>
-                    <user>openmrs-user</user>
+                    <user>root</user>
                     <password>password</password>
                     <schemas>
                         <schema>openmrs</schema>

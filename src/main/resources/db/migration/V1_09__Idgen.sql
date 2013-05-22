@@ -107,4 +107,5 @@ ALTER TABLE `idgen_id_pool` ADD COLUMN `refill_with_scheduled_task` tinyint(1) N
 ALTER TABLE `idgen_remote_source` ADD COLUMN `user` varchar(50) ;
 ALTER TABLE `idgen_remote_source` ADD COLUMN `password` varchar(20) ;
 
-insert into global_property (`property`, `property_value`, `description`, `uuid`) values ('idgen.database_version', '2.4.1', 'DO NOT MODIFY.  Current database version number for the idgen module.', '15e27b7b-d098-4169-973a-b1c583efdeb');
+insert into global_property (`property`, `property_value`, `description`, `uuid`) values ('idgen.database_version', '2.4.1',
+'DO NOT MODIFY.  Current database version number for the idgen module.', uuid());

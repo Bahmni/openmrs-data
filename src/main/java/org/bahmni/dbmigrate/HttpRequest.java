@@ -30,6 +30,6 @@ public class HttpRequest {
     }
 
     private byte[] identity() {
-        return (properties.getOpenMRSUser() + ":" + properties.getOpenMRSPassword()).getBytes();
+        return (properties.getOpenMRSDatabaseUser() + ":" + properties.getOpenMRSDatabasePassword()).getBytes();
     }
 }

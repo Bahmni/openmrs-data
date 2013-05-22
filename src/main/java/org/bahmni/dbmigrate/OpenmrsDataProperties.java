@@ -1,37 +1,34 @@
 package org.bahmni.dbmigrate;
 
+import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.Properties;
 
 public class OpenMRSDataProperties {
-    private final Properties properties;
     private static OpenMRSDataProperties instance;
+    private static Properties properties;
 
     public static OpenMRSDataProperties getInstance() throws IOException {
         if (instance == null) instance = new OpenMRSDataProperties();
 
+        String propertyFile = System.getenv("OPENMRS_PROP_FILE");
+        if (propertyFile == null) throw new IllegalArgumentException("Environment variable OPENMRS_PROP_FILE missing.");
+        FileInputStream propFile =  new FileInputStream(propertyFile);
+
+        properties = new Properties(System.getProperties());
+        properties.load(propFile);
         return instance;
     }
 
-    private OpenMRSDataProperties() throws IOException {
-        String propertiesFile = System.getProperty("propertiesFile");
-
-        properties = new Properties();
-        try (InputStream in = this.getClass().getResourceAsStream(propertiesFile)) {
-            properties.load(in);
-        }
-    }
-
     public String getOpenMRSUrl() {
-        return properties.getProperty("openmrs.url");
+        throw new RuntimeException("Not used right now");
     }
 
-    public String getOpenMRSUser() {
-        return properties.getProperty("openmrs.user");
+    public String getOpenMRSDatabaseUser() {
+        return properties.getProperty("openmrs.database.user");
     }
 
-    public String getOpenMRSPassword() {
-        return properties.getProperty("openmrs.password");
+    public String getOpenMRSDatabasePassword() {
+        return properties.getProperty("openmrs.database.password");
     }
 }

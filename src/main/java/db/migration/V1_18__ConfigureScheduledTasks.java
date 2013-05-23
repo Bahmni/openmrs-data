@@ -14,8 +14,8 @@ public class V1_18__ConfigureScheduledTasks implements JdbcMigration {
     public void migrate(Connection connection) throws Exception {
         deleteTask(connection, "Update Concept Index");
         deleteTask(connection, "Auto Close Visits Task");
-        updateGlobalProperty(connection, "scheduler.username", OpenMRSDataProperties.getInstance().getOpenMRSDatabaseUser());
-        updateGlobalProperty(connection, "scheduler.password", OpenMRSDataProperties.getInstance().getOpenMRSDatabasePassword());
+        updateGlobalProperty(connection, "scheduler.username", OpenMRSDataProperties.getInstance().getOpenMRSUser());
+        updateGlobalProperty(connection, "scheduler.password", OpenMRSDataProperties.getInstance().getOpenMRSPassword());
     }
 
     private void updateGlobalProperty(Connection connection, String propertyName, String propertyValue) throws SQLException {

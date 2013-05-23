@@ -24,11 +24,11 @@ public class OpenMRSDataProperties {
         throw new RuntimeException("Not used right now");
     }
 
-    public String getOpenMRSDatabaseUser() {
-        return properties.getProperty("openmrs.database.user");
+    public String getOpenMRSUser() {
+        return "admin";
     }
 
-    public String getOpenMRSDatabasePassword() {
-        return properties.getProperty("openmrs.database.password");
+    public String getOpenMRSPassword() {
+        return properties.getProperty("openmrs.password");
     }
 }

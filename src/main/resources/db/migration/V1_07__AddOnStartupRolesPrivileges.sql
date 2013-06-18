@@ -13,6 +13,7 @@ INSERT INTO `privilege` (`privilege`,`description`,`uuid`) VALUES ('Delete Visit
 INSERT INTO `privilege` (`privilege`,`description`,`uuid`) VALUES ('Edit Allergies','Able to edit allergies',uuid());
 INSERT INTO `privilege` (`privilege`,`description`,`uuid`) VALUES ('Edit Problems','Able to edit problems',uuid());
 INSERT INTO `privilege` (`privilege`,`description`,`uuid`) VALUES ('Edit Visits','Able to edit visits',uuid());
+INSERT INTO `privilege` (`privilege`,`description`,`uuid`) VALUES ('Manage Address Hierarchy','Able to add/edit/delete address hierarchies',uuid());
 INSERT INTO `privilege` (`privilege`,`description`,`uuid`) VALUES ('Manage Address Templates','Able to add/edit/delete address templates',uuid());
 INSERT INTO `privilege` (`privilege`,`description`,`uuid`) VALUES ('Manage Concept Map Types','Able to add/edit/retire concept map types',uuid());
 INSERT INTO `privilege` (`privilege`,`description`,`uuid`) VALUES ('Manage Concept Name tags','Able to add/edit/delete concept name tags',uuid());

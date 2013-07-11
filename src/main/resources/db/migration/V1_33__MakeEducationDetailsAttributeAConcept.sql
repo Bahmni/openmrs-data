@@ -50,4 +50,4 @@ call add_concept_word(@answer_concept_id, @concept_name_full_id, 'AND', '1');
 call add_concept_word(@answer_concept_id, @concept_name_full_id, 'ABOVE', '1');
 call add_concept_answer(@concept_id, @answer_concept_id, 6);
 
-UPDATE person_attribute_type SET format = 'org.openmrs.Concept', foreign_key = @concept_id  WHERE name = 'occupation';
+UPDATE person_attribute_type SET format = 'org.openmrs.Concept', foreign_key = @concept_id  WHERE name = 'education';

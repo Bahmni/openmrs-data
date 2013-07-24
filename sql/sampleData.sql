@@ -245,7 +245,7 @@ INSERT INTO concept_numeric (concept_id,hi_absolute,hi_critical,hi_normal,low_ab
 INSERT INTO concept_numeric (concept_id,hi_absolute,hi_critical,hi_normal,low_absolute,low_critical,low_normal,units,precise) VALUES (146,null,null,null,null,null,null,null,false);
 INSERT INTO concept_numeric (concept_id,hi_absolute,hi_critical,hi_normal,low_absolute,low_critical,low_normal,units,precise) VALUES (148,null,null,null,null,null,null,null,false);
 
-SELECT concept_id FROM concept_id WHERE name="Laboratory" INTO @laboratory_concept_id;
+SELECT concept_id FROM concept_name WHERE name="Laboratory" INTO @laboratory_concept_id;
 
 INSERT INTO concept_set (concept_set_id,concept_id,concept_set,sort_weight,creator,date_created,uuid) VALUES (172,153,@laboratory_concept_id,0.0,1,{ts '2013-07-23 14:46:20'},'c5ef89ef-f5c8-41e9-92ce-56dacc9e2ffb');
 INSERT INTO concept_set (concept_set_id,concept_id,concept_set,sort_weight,creator,date_created,uuid) VALUES (173,152,@laboratory_concept_id,1.0,1,{ts '2013-07-23 14:46:20'},'71a7f070-cb65-4231-8de3-2027cfdf1178');

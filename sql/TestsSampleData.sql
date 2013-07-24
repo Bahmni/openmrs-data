@@ -1,13 +1,13 @@
 use openmrs;
 
-INSERT INTO concept (concept_id,retired,short_name,description,form_text,datatype_id,class_id,is_set,creator,date_created,version) VALUES (103,false,null,null,null,1,1,false,1,{ts '2013-07-09 10:48:52'},null);
-INSERT INTO concept (concept_id,retired,short_name,description,form_text,datatype_id,class_id,is_set,creator,date_created,version) VALUES (104,false,null,null,null,1,1,false,1,{ts '2013-07-09 10:49:27'},null);
-INSERT INTO concept (concept_id,retired,short_name,description,form_text,datatype_id,class_id,is_set,creator,date_created,version) VALUES (105,false,null,null,null,4,8,true,1,{ts '2013-07-09 10:59:33'},null);
-INSERT INTO concept (concept_id,retired,short_name,description,form_text,datatype_id,class_id,is_set,creator,date_created,version) VALUES (106,false,null,null,null,4,10,true,1,{ts '2013-07-09 11:11:57'},null);
-INSERT INTO concept (concept_id,retired,short_name,description,form_text,datatype_id,class_id,is_set,creator,date_created,version) VALUES (107,false,null,null,null,4,10,true,1,{ts '2013-07-09 11:13:14'},null);
-INSERT INTO concept (concept_id,retired,short_name,description,form_text,datatype_id,class_id,is_set,creator,date_created,version) VALUES (108,false,null,null,null,1,1,false,1,{ts '2013-07-09 11:23:28'},null);
-INSERT INTO concept (concept_id,retired,short_name,description,form_text,datatype_id,class_id,is_set,creator,date_created,version) VALUES (109,false,null,null,null,4,10,true,1,{ts '2013-07-09 11:24:54'},null);
-INSERT INTO concept (concept_id,retired,short_name,description,form_text,datatype_id,class_id,is_set,creator,date_created,version) VALUES (110,false,null,null,null,4,10,true,1,{ts '2013-07-09 11:25:46'},null);
+INSERT INTO concept (concept_id,retired,short_name,description,form_text,datatype_id,class_id,is_set,creator,date_created,version, uuid) VALUES (103,false,null,null,null,1,1,false,1,{ts '2013-07-09 10:48:52'},null, uuid());
+INSERT INTO concept (concept_id,retired,short_name,description,form_text,datatype_id,class_id,is_set,creator,date_created,version, uuid) VALUES (104,false,null,null,null,1,1,false,1,{ts '2013-07-09 10:49:27'},null, uuid());
+INSERT INTO concept (concept_id,retired,short_name,description,form_text,datatype_id,class_id,is_set,creator,date_created,version, uuid) VALUES (105,false,null,null,null,4,8,true,1,{ts '2013-07-09 10:59:33'},null , uuid());
+INSERT INTO concept (concept_id,retired,short_name,description,form_text,datatype_id,class_id,is_set,creator,date_created,version, uuid) VALUES (106,false,null,null,null,4,10,true,1,{ts '2013-07-09 11:11:57'},null, uuid());
+INSERT INTO concept (concept_id,retired,short_name,description,form_text,datatype_id,class_id,is_set,creator,date_created,version, uuid) VALUES (107,false,null,null,null,4,10,true,1,{ts '2013-07-09 11:13:14'},null, uuid());
+INSERT INTO concept (concept_id,retired,short_name,description,form_text,datatype_id,class_id,is_set,creator,date_created,version, uuid) VALUES (108,false,null,null,null,1,1,false,1,{ts '2013-07-09 11:23:28'},null, uuid());
+INSERT INTO concept (concept_id,retired,short_name,description,form_text,datatype_id,class_id,is_set,creator,date_created,version, uuid) VALUES (109,false,null,null,null,4,10,true,1,{ts '2013-07-09 11:24:54'},null, uuid());
+INSERT INTO concept (concept_id,retired,short_name,description,form_text,datatype_id,class_id,is_set,creator,date_created,version, uuid) VALUES (110,false,null,null,null,4,10,true,1,{ts '2013-07-09 11:25:46'},null, uuid());
 
 INSERT INTO concept_set (concept_set_id,concept_id,concept_set,sort_weight,creator,date_created,uuid) VALUES (101,103,105,0.0,1,{ts '2013-07-09 10:59:33'},'4e78c273-fb09-47cd-be25-b55d87c8de8c');
 INSERT INTO concept_set (concept_set_id,concept_id,concept_set,sort_weight,creator,date_created,uuid) VALUES (102,104,105,1.0,1,{ts '2013-07-09 10:59:33'},'84d70583-417b-461c-add6-ff940e93d0e8');

@@ -1,1 +1,1 @@
-insert into chunking_history (chunk_length, start) values (100, 1);
+insert into chunking_history (chunk_length, start) values (5, 1);

@@ -1,0 +1,1 @@
+insert into role_privilege (role,privilege) values ('RegistrationClerk','Delete Observations');

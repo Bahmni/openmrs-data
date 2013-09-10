@@ -1,0 +1,2 @@
+INSERT INTO scheduler_task_config(name, description, schedulable_class, start_time, start_time_pattern, repeat_interval, start_on_startup, started, created_by, date_created, uuid)
+VALUES ('Auto-close Visits', 'Auto-close visits at end of day', 'org.openmrs.scheduler.tasks.AutoCloseVisitsTask', '2013-09-10 23:59:59', 'MM/dd/yyyy HH:mm:ss', 86400, 1, 0, 1,  curdate(), uuid());

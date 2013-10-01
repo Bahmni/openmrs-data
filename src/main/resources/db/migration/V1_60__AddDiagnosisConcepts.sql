@@ -5,7 +5,7 @@ set @concept_name_full_id = 0;
 set @concept_source_id = 0;
 set @concept_map_type_id = 0;
 
-SELECT concept_source_id INTO @concept_source_id FROM concept_reference_source where name = 'org.openmrs.module.emr';
+SELECT concept_source_id INTO @concept_source_id FROM concept_reference_source where name = 'org.openmrs.module.emrapi';
 SELECT concept_map_type_id INTO @concept_map_type_id FROM concept_map_type where name = 'SAME-AS';
 
 

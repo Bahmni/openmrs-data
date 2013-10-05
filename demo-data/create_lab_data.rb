@@ -16,7 +16,7 @@ require 'pg'
   "Remark" => "Text"
 }
 
-@file = File.open("laboratory_data.sql", "w+")
+@file = File.open("sql/laboratory_data.sql", "w+")
 @file.write("set @concept_id = 0;\n")
 @file.write("set @answer_concept_id = 0;\n")
 @file.write("set @concept_name_short_id = 0;\n")
@@ -45,7 +45,7 @@ def add_test(concept_name, short_name, datatype)
   return unless @tests[concept_name].nil?
   @tests[concept_name] = SecureRandom.hex
   test_uuid = get_test_uuid_from_openelis(concept_name)
-  @file.write("call add_concept(@concept_id, @concept_name_short_id, @concept_name_full_id, '#{concept_name}', '#{short_name}', '#{datatype}', 'Test', true);\n")
+  @file.write("call add_concept(@concept_id, @concept_name_short_id, @concept_name_full_id, '#{concept_name}', '#{short_name}', '#{datatype}', 'Test', false);\n")
   @file.write("update concept set uuid = '#{test_uuid}' where concept_id = @concept_id;\n") if test_uuid
   @file.write("set @test_#{@tests[concept_name]} = @concept_id;\n")
 end
@@ -70,7 +70,7 @@ def get_test_uuid_from_openelis(name)
 end
 
 index = 0
-CSV.foreach "lab_data.csv", :headers => true do |row|
+CSV.foreach "csv/lab_data.csv", :headers => true do |row|
   sample_type_name = row["Sample TYPE"]
   panel_name = row["PANEL"]
   test_name = row["TEST"]

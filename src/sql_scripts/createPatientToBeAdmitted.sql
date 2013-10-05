@@ -1,14 +1,14 @@
 delimiter //
 
-drop procedure if exists `bahmni_create_patient` //
+drop procedure if exists `bahmni_create_patient_to_admit` //
 
-create procedure bahmni_create_patient(_firstName varchar(50), _lastName varchar(50), inout _patientIdentifiers text, out _thisPatientIdentifier varchar(50))
+create procedure bahmni_create_patient_to_admit(_firstName varchar(50), _lastName varchar(50), inout _patientIdentifiers text, out _thisPatientIdentifier varchar(50))
 begin
 /* USAGE
     set @_ids = "";
-    call bahmni_create_patient("brett", "pettichord", @_ids, @_thisId);
+    call bahmni_create_patient_to_admit("jhamu", "sughand", @_ids, @_thisId);
     select @_thisId;
-    call bahmni_create_patient("martin", "fowler", @_ids, @_thisId);
+    call bahmni_create_patient_to_admit("dharam", "paaji", @_ids, @_thisId);
     select @_thisId;
     select @_ids;
 */
@@ -20,6 +20,18 @@ begin
 	DECLARE _personUUID char(38);
 	DECLARE _visitUUID char(38);
 	DECLARE _encounterUUID char(38);
+
+declare _admitEncounterUUID varchar(38);
+declare _admitObservationUUID varchar(38);
+declare _admitObservationWithAdmissionNoteUUID varchar(38);
+declare _anotherAdmitObservationUUID varchar(38);
+declare _admitDatetime datetime;
+declare _admitEncounterId int;
+declare _dispositionSetConceptId int;
+declare _dispositionNoteConceptId int;
+declare _dispositionConceptId int;
+declare _admitPatientConceptId int;
+declare _admitObservationId int;
 
 	set _now = now();
 	set _personUUID = uuid();
@@ -49,6 +61,32 @@ begin
 	select encounter_id into _encounterId from encounter where uuid=_encounterUUID;
 	insert into obs (uuid, obs_datetime, value_group_id, value_datetime, value_numeric, value_modifier, value_text, value_complex, comments, accession_number, date_created, voided, date_voided, void_reason, person_id, concept_id, value_coded, value_coded_name_id, value_drug, order_id, location_id, encounter_id, creator, voided_by, obs_group_id, previous_version) values (uuid(), _now, null, null, 10.0, null, null, null, null, null, _now, 0, null, null, _personId, 4, null, null, null, null, null, _encounterId, 1, null, null, null);
 	
+
+
+set _admitEncounterUUID = uuid();
+set _admitObservationUUID = uuid();
+set _admitObservationWithAdmissionNoteUUID = uuid();
+set _anotherAdmitObservationUUID = uuid();
+set _admitDatetime = now();
+
+insert into encounter (uuid, encounter_datetime, date_created, voided, date_voided, void_reason, date_changed, changed_by, patient_id, location_id, form_id, encounter_type, creator, voided_by, visit_id) values (_admitEncounterUUID, _admitDatetime, _admitDatetime, 0, null, null, _admitDatetime, 1, _personId, null, null, 2, 1, null, _visitId);
+
+select encounter_id into _admitEncounterId from encounter where uuid=_admitEncounterUUID;
+
+select distinct concept_id into _dispositionSetConceptId from concept_name where name ='Disposition Set';
+select distinct concept_id into _dispositionNoteConceptId from concept_name where name ='Disposition Note';
+select distinct concept_id into _dispositionConceptId from concept_name where name ='Disposition';
+select distinct concept_id into _admitPatientConceptId from concept_name where name ='Admit Patient';
+
+insert into obs (uuid, obs_datetime, value_group_id, value_datetime, value_numeric, value_modifier, value_text, value_complex, comments, accession_number, date_created, voided, date_voided, void_reason, person_id, concept_id, value_coded, value_coded_name_id, value_drug, order_id, location_id, encounter_id, creator, voided_by, obs_group_id, previous_version) values (_admitObservationUUID, _admitDatetime, null, null, null, null, null, null, null, null, _admitDatetime, 0, null, null, _personId, _dispositionSetConceptId, null, null, null, null, null, _admitEncounterId, 1, null, null, null);
+
+select obs_id into _admitObservationId from obs where uuid = _admitObservationUUID;
+
+insert into obs (uuid, obs_datetime, value_group_id, value_datetime, value_numeric, value_modifier, value_text, value_complex, comments, accession_number, date_created, voided, date_voided, void_reason, person_id, concept_id, value_coded, value_coded_name_id, value_drug, order_id, location_id, encounter_id, creator, voided_by, obs_group_id, previous_version) values (_admitObservationWithAdmissionNoteUUID, _admitDatetime, null, null, null, null, 'admit this patient to emergency.', null, null, null, _admitDatetime, 0, null, null, _personId, _dispositionNoteConceptId, null, null, null, null, null, _admitEncounterId, 1, null, _admitObservationId, null);
+
+insert into obs (uuid, obs_datetime, value_group_id, value_datetime, value_numeric, value_modifier, value_text, value_complex, comments, accession_number, date_created, voided, date_voided, void_reason, person_id, concept_id, value_coded, value_coded_name_id, value_drug, order_id, location_id, encounter_id, creator, voided_by, obs_group_id, previous_version) values (_anotherAdmitObservationUUID, _admitDatetime, null, null, null, null, null, null, null, null, _admitDatetime, 0, null, null, _personId, _dispositionConceptId, _admitPatientConceptId, null, null, null, null, _admitEncounterId, 1, null, _admitObservationId, null);
+
+
 end//
 
 delimiter ;

@@ -7,7 +7,7 @@ require 'pg'
 @tests = {}
 @concept_set_map = {}
 
-# @openelis_conn = PGconn.open(:host => '172.18.2.10', :dbname => "clinlims", :user => "clinlims")
+# @openelis_conn = PGconn.open(:host => '10.4.3.3', :dbname => "clinlims", :user => "clinlims")
 @openelis_conn = PGconn.open(:dbname => "clinlims", :user => "clinlims")
 
 @result_type_map = {
@@ -27,7 +27,7 @@ require 'pg'
 def add_sample_type(concept_name, short_name)
   return unless @sample_types[concept_name].nil?
   @sample_types[concept_name] = SecureRandom.hex
-  @file.write("call add_concept(@concept_id, @concept_name_short_id, @concept_name_full_id, '#{concept_name}', '#{short_name}', 'N/A', 'LabSet', true);\n")
+  @file.write("call add_concept(@concept_id, @concept_name_short_id, @concept_name_full_id, '#{concept_name}', '#{short_name}', 'N/A', 'ConvSet', true);\n")
   @file.write("call add_concept_set_members(@laboratory_concept_id, @concept_id, 1);\n")
   @file.write("set @sample_type_#{@sample_types[concept_name]} = @concept_id;\n")
 end
@@ -36,7 +36,7 @@ def add_panel(concept_name, short_name)
   return unless @panels[concept_name].nil?
   @panels[concept_name] = SecureRandom.hex
   panel_uuid = get_panel_uuid_from_openelis(concept_name)
-  @file.write("call add_concept(@concept_id, @concept_name_short_id, @concept_name_full_id, '#{concept_name}', '#{short_name}', 'N/A', 'ConvSet', true);\n")
+  @file.write("call add_concept(@concept_id, @concept_name_short_id, @concept_name_full_id, '#{concept_name}', '#{short_name}', 'N/A', 'LabSet', true);\n")
   @file.write("update concept set uuid = '#{panel_uuid}' where concept_id = @concept_id;\n") if panel_uuid
   @file.write("set @panel_#{@panels[concept_name]} = @concept_id;\n")
 end
@@ -51,8 +51,11 @@ def add_test(concept_name, short_name, datatype)
 end
 
 def add_concept_set(concept_set_id, concept_id)
-  return if @concept_set_map[concept_set_id] == concept_id
-  @concept_set_map[concept_set_id] = concept_id
+  if (@concept_set_map[concept_set_id] && @concept_set_map[concept_set_id][concept_id])
+    return
+  end
+  @concept_set_map[concept_set_id] = @concept_set_map[concept_set_id] || {}
+  @concept_set_map[concept_set_id][concept_id] = true
   @file.write("call add_concept_set_members(#{concept_set_id},#{concept_id},1);\n")
 end
 

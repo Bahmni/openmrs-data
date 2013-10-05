@@ -6,9 +6,15 @@ create procedure bahmni_create_patient(_firstName varchar(50), _lastName varchar
 begin
 /* USAGE
     set @_ids = "";
+    call bahmni_create_patient("Haksoa", "Hanksla", @_ids, @_thisId);
+    call bahmni_create_patient("Haksoa", "Hanlsa", @_ids, @_thisId);
+    call bahmni_create_patient("Hanls", "Piqjal", @_ids, @_thisId);
+    call bahmni_create_patient("Lapolshja", "Pauksoa", @_ids, @_thisId);
+    call bahmni_create_patient("Nagisla", "Nahglaos", @_ids, @_thisId);
+    call bahmni_create_patient("Lakspoana", "Pqoiasl", @_ids, @_thisId);
+    call bahmni_create_patient("Yhaksoa", "Waskaya", @_ids, @_thisId);
+
     call bahmni_create_patient("brett", "pettichord", @_ids, @_thisId);
-    select @_thisId;
-    call bahmni_create_patient("martin", "fowler", @_ids, @_thisId);
     select @_thisId;
     select @_ids;
 */

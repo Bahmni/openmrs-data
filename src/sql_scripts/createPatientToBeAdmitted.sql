@@ -6,9 +6,21 @@ create procedure bahmni_create_patient_to_admit(_firstName varchar(50), _lastNam
 begin
 /* USAGE
     set @_ids = "";
-    call bahmni_create_patient_to_admit("jhamu", "sughand", @_ids, @_thisId);
-    select @_thisId;
-    call bahmni_create_patient_to_admit("dharam", "paaji", @_ids, @_thisId);
+    call bahmni_create_patient_to_admit("Gatsha", "Haisna", @_ids, @_thisId);
+    call bahmni_create_patient_to_admit("Lomals", "Gaha", @_ids, @_thisId);
+    call bahmni_create_patient_to_admit("Guansla", "Bagjal", @_ids, @_thisId);
+    call bahmni_create_patient_to_admit("Nagha", "Pjalsa", @_ids, @_thisId);
+    call bahmni_create_patient_to_admit("Plains", "Nagnsoq", @_ids, @_thisId);
+    call bahmni_create_patient_to_admit("Nagilauan", "Polausnma", @_ids, @_thisId);
+    call bahmni_create_patient_to_admit("Nahspnag", "Nagkaplah", @_ids, @_thisId);
+    call bahmni_create_patient_to_admit("Polahsna", "Naghanpal", @_ids, @_thisId);
+    call bahmni_create_patient_to_admit("Nhalshua", "Naghlaosa", @_ids, @_thisId);
+    call bahmni_create_patient_to_admit("Tjapus", "Lpaojsm", @_ids, @_thisId);
+    call bahmni_create_patient_to_admit("Nhalso", "Naglousn", @_ids, @_thisId);
+    call bahmni_create_patient_to_admit("Nagiusp", "Naghoal", @_ids, @_thisId);
+    call bahmni_create_patient_to_admit("Gahso", "Gakso", @_ids, @_thisId);
+    call bahmni_create_patient_to_admit("Poalsh", "Nagfsla", @_ids, @_thisId);
+    call bahmni_create_patient_to_admit("Lahsoa", "Nagsoal", @_ids, @_thisId);
     select @_thisId;
     select @_ids;
 */

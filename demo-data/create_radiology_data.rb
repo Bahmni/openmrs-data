@@ -51,6 +51,26 @@ def add_concept_set(concept_set_id, concept_id)
   @file.write("call add_concept_set_members(#{concept_set_id},#{concept_id},1);\n")
 end
 
+def add_radiology_concept_word()
+  @file.write("
+
+-- Creating Radiology concept word
+
+set @radiology_concept_id = 0;
+set @radiology_concept_name_id = 0;
+set @new_concept_word_id = 0;
+
+select concept.concept_id, concept_name.concept_name_id from concept join concept_name on concept_name.concept_id = concept.concept_id
+where concept_name.name = 'Radiology' and concept_name.concept_name_type='FULLY_SPECIFIED' INTO @radiology_concept_id, @radiology_concept_name_id;
+
+select max(concept_word_id) + 1 from concept_word INTO @new_concept_word_id;
+
+select @radiology_concept_id, @radiology_concept_name_id, @new_concept_word_id;
+
+INSERT INTO concept_word (concept_word_id, concept_id, word, locale, concept_name_id, weight)
+            VALUES (@new_concept_word_id, @radiology_concept_id, 'Radiology', 'en', @radiology_concept_name_id, 1);")
+end 
+
 index = 0
 CSV.foreach "csv/radiology_data.csv", :headers => true do |row|
   investigation_name = row["Investigation"]
@@ -80,3 +100,5 @@ CSV.foreach "csv/radiology_data.csv", :headers => true do |row|
     add_concept_set("@level_two_#{@level_two[level_two_name]}", "@test_#{@tests[test_name]}")
   end
 end
+
+add_radiology_concept_word

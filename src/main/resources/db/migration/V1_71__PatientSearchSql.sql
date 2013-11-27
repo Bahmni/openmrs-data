@@ -21,13 +21,6 @@ values ('emrapi.sqlSearch.patientsToAdmit',
 		);
 
 insert into global_property (`property`, `property_value`, `description`, `uuid`)
-values ('emrapi.sqlSearch.admittedPatients', 
-			'select distinct concat(pn.given_name,\' \', pn.family_name) as name, pi.identifier as identifier, concat("",p.uuid) as uuid, concat("",v.uuid) as activeVisitUuid from encounter e join visit v on e.visit_id = v.visit_id join person_name pn on v.patient_id = pn.person_id and pn.voided = 0 join patient_identifier pi on v.patient_id = pi.patient_id join person p on v.patient_id = p.person_id join encounter_type et on et.encounter_type_id = e.encounter_type where v.date_stopped is null and et.name = \'ADMISSION\'', 
-			'Sql query to get list of admitted patients', 
-			uuid()
-		);
-
-insert into global_property (`property`, `property_value`, `description`, `uuid`)
 values ('emrapi.sqlSearch.patientsToDischarge', 
 			'select distinct concat(pn.given_name,\' \',pn.family_name) as name, pi.identifier as identifier, concat("",p.uuid) as uuid, concat("",v.uuid) as activeVisitUuid from visit v inner join person_name pn on v.patient_id = pn.person_id and pn.voided = 0 inner join patient_identifier pi on v.patient_id = pi.patient_id inner join person p on v.patient_id = p.person_id inner join encounter e on v.visit_id = e.visit_id inner join obs o on e.encounter_id = o.encounter_id inner join concept c on o.value_coded = c.concept_id inner join concept_name cn on c.concept_id = cn.concept_id left outer join encounter e1 on e1.visit_id = v.visit_id and e1.encounter_type = (select encounter_type_id from encounter_type where name = \'DISCHARGE\') where v.date_stopped is null and cn.name = \'Discharge Patient\'and e1.encounter_id is null', 
 			'Sql query to get list of patients to discharge', 
@@ -40,3 +33,10 @@ values ('emrapi.sqlSearch.patientsHasPendingOrders',
 			'Sql query to get list of patients who has pending orders', 
 			uuid()
 		);
+
+insert into global_property (`property`, `property_value`, `description`, `uuid`)
+values ('emrapi.sqlSearch.admittedPatients', 
+			'select distinct concat(pn.given_name,\' \', pn.family_name) as name, pi.identifier as identifier, concat("",p.uuid) as uuid, concat("",v.uuid) as activeVisitUuid from encounter e join visit v on e.visit_id = v.visit_id join person_name pn on v.patient_id = pn.person_id and pn.voided = 0 join patient_identifier pi on v.patient_id = pi.patient_id join person p on v.patient_id = p.person_id join encounter_type et on et.encounter_type_id = e.encounter_type where v.date_stopped is null and et.name = \'ADMISSION\'', 
+			'Sql query to get list of admitted patients',
+			uuid()
+		);	

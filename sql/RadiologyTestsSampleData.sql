@@ -60,3 +60,10 @@ INSERT INTO concept (concept_id,retired,short_name,description,form_text,datatyp
 INSERT INTO concept_name (concept_name_id,concept_id,name,locale,locale_preferred,creator,date_created,concept_name_type,voided,voided_by,date_voided,void_reason,uuid) VALUES (500131,500131,'Head','en',false,1,now(),'FULLY_SPECIFIED',false,null,null,null,uuid());
 INSERT INTO concept_word (concept_word_id,concept_id,word,locale,concept_name_id,weight) VALUES (5001311,500131,'Head','en',1,11);
 INSERT INTO concept_set (concept_set_id,concept_id,concept_set,sort_weight,creator,date_created,uuid) VALUES (500131,500131,50013,0.0,1,now(),uuid());
+
+INSERT INTO concept (concept_id,retired,short_name,description,form_text,datatype_id,class_id,is_set,creator,date_created,version, uuid) VALUES (50002,false,null,null,null,3,1,false,1,now(),null, uuid()); 
+INSERT INTO concept_name (concept_name_id,concept_id,name,locale,locale_preferred,creator,date_created,concept_name_type,voided,voided_by,date_voided,void_reason,uuid) VALUES (50002,50002,'Radiology Result','en',false,1,now(),'FULLY_SPECIFIED',false,null,null,null,uuid());
+INSERT INTO concept_word (concept_word_id,concept_id,word,locale,concept_name_id,weight) VALUES (50002,50002,'Radiology','en',1,11);
+INSERT INTO concept_word (concept_word_id,concept_id,word,locale,concept_name_id,weight) VALUES (50003,50002,'Result','en',1,11);
+
+INSERT INTO encounter_type (encounter_type_id,name,description,creator,date_created,uuid) VALUES (30,'INVESTIGATION','encounter for investigation',1,now(),uuid());

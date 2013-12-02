@@ -20,36 +20,36 @@ insert into location_tag_map ( location_id, location_tag_id )
 
 
 -- beds
-insert into bed (bed_number) values ('GF1');
-insert into bed (bed_number) values ('GF2');
-insert into bed (bed_number) values ('GF3');
-insert into bed (bed_number) values ('GF4');
-insert into bed (bed_number) values ('GF5');
-insert into bed (bed_number) values ('GF6');
-insert into bed (bed_number) values ('GF7');
-insert into bed (bed_number) values ('GF8');
-insert into bed (bed_number) values ('GF9');
-insert into bed (bed_number) values ('GF10');
-insert into bed (bed_number) values ('GF11');
-insert into bed (bed_number) values ('GF12');
-insert into bed (bed_number) values ('GF13');
-insert into bed (bed_number) values ('GF14');
-insert into bed (bed_number) values ('GF15');
-insert into bed (bed_number) values ('GF16');
-insert into bed (bed_number) values ('GF17');
-insert into bed (bed_number) values ('GF18');
-insert into bed (bed_number) values ('GF19');
-insert into bed (bed_number) values ('GF20');
-insert into bed (bed_number) values ('GF21');
-insert into bed (bed_number) values ('GF22');
-insert into bed (bed_number) values ('GF23');
-insert into bed (bed_number) values ('GF24');
-insert into bed (bed_number) values ('GF25');
-insert into bed (bed_number) values ('GF26');
-insert into bed (bed_number) values ('GF27');
-insert into bed (bed_number) values ('GF28');
-insert into bed (bed_number) values ('GF29');
-insert into bed (bed_number) values ('GF30');
+insert into bed (bed_number, date_created, uuid) values ('GF1', '2013-10-05 00:00:00', uuid());
+insert into bed (bed_number, date_created, uuid) values ('GF2', '2013-10-05 00:00:00', uuid());
+insert into bed (bed_number, date_created, uuid) values ('GF3', '2013-10-05 00:00:00', uuid());
+insert into bed (bed_number, date_created, uuid) values ('GF4', '2013-10-05 00:00:00', uuid());
+insert into bed (bed_number, date_created, uuid) values ('GF5', '2013-10-05 00:00:00', uuid());
+insert into bed (bed_number, date_created, uuid) values ('GF6', '2013-10-05 00:00:00', uuid());
+insert into bed (bed_number, date_created, uuid) values ('GF7', '2013-10-05 00:00:00', uuid());
+insert into bed (bed_number, date_created, uuid) values ('GF8', '2013-10-05 00:00:00', uuid());
+insert into bed (bed_number, date_created, uuid) values ('GF9', '2013-10-05 00:00:00', uuid());
+insert into bed (bed_number, date_created, uuid) values ('GF10', '2013-10-05 00:00:00', uuid());
+insert into bed (bed_number, date_created, uuid) values ('GF11', '2013-10-05 00:00:00', uuid());
+insert into bed (bed_number, date_created, uuid) values ('GF12', '2013-10-05 00:00:00', uuid());
+insert into bed (bed_number, date_created, uuid) values ('GF13', '2013-10-05 00:00:00', uuid());
+insert into bed (bed_number, date_created, uuid) values ('GF14', '2013-10-05 00:00:00', uuid());
+insert into bed (bed_number, date_created, uuid) values ('GF15', '2013-10-05 00:00:00', uuid());
+insert into bed (bed_number, date_created, uuid) values ('GF16', '2013-10-05 00:00:00', uuid());
+insert into bed (bed_number, date_created, uuid) values ('GF17', '2013-10-05 00:00:00', uuid());
+insert into bed (bed_number, date_created, uuid) values ('GF18', '2013-10-05 00:00:00', uuid());
+insert into bed (bed_number, date_created, uuid) values ('GF19', '2013-10-05 00:00:00', uuid());
+insert into bed (bed_number, date_created, uuid) values ('GF20', '2013-10-05 00:00:00', uuid());
+insert into bed (bed_number, date_created, uuid) values ('GF21', '2013-10-05 00:00:00', uuid());
+insert into bed (bed_number, date_created, uuid) values ('GF22', '2013-10-05 00:00:00', uuid());
+insert into bed (bed_number, date_created, uuid) values ('GF23', '2013-10-05 00:00:00', uuid());
+insert into bed (bed_number, date_created, uuid) values ('GF24', '2013-10-05 00:00:00', uuid());
+insert into bed (bed_number, date_created, uuid) values ('GF25', '2013-10-05 00:00:00', uuid());
+insert into bed (bed_number, date_created, uuid) values ('GF26', '2013-10-05 00:00:00', uuid());
+insert into bed (bed_number, date_created, uuid) values ('GF27', '2013-10-05 00:00:00', uuid());
+insert into bed (bed_number, date_created, uuid) values ('GF28', '2013-10-05 00:00:00', uuid());
+insert into bed (bed_number, date_created, uuid) values ('GF29', '2013-10-05 00:00:00', uuid());
+insert into bed (bed_number, date_created, uuid) values ('GF30', '2013-10-05 00:00:00', uuid());
 
 -- bed layout
 insert into bed_location_map (location_id ,row_number, column_number, bed_id) 

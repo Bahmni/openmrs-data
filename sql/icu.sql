@@ -19,14 +19,14 @@ insert into location_tag_map ( location_id, location_tag_id )
 
 
 -- beds
-insert into bed (bed_number) values ('I1');
-insert into bed (bed_number) values ('I2');
-insert into bed (bed_number) values ('I3');
-insert into bed (bed_number) values ('I4');
-insert into bed (bed_number) values ('I5');
-insert into bed (bed_number) values ('I6');
-insert into bed (bed_number) values ('I7');
-insert into bed (bed_number) values ('I8');
+insert into bed (bed_number, date_created, uuid) values ('I1', '2013-10-05 00:00:00', uuid());
+insert into bed (bed_number, date_created, uuid) values ('I2', '2013-10-05 00:00:00', uuid());
+insert into bed (bed_number, date_created, uuid) values ('I3', '2013-10-05 00:00:00', uuid());
+insert into bed (bed_number, date_created, uuid) values ('I4', '2013-10-05 00:00:00', uuid());
+insert into bed (bed_number, date_created, uuid) values ('I5', '2013-10-05 00:00:00', uuid());
+insert into bed (bed_number, date_created, uuid) values ('I6', '2013-10-05 00:00:00', uuid());
+insert into bed (bed_number, date_created, uuid) values ('I7', '2013-10-05 00:00:00', uuid());
+insert into bed (bed_number, date_created, uuid) values ('I8', '2013-10-05 00:00:00', uuid());
 
 -- bed layout
 insert into bed_location_map (location_id ,row_number, column_number, bed_id) 

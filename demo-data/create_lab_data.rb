@@ -12,7 +12,7 @@ require 'pg'
 
 @result_type_map = {
   "Numeric" => "Numeric",
-  "Drop-down" => "Coded",
+  "Drop-down" => "Text",
   "Remark" => "Text"
 }
 

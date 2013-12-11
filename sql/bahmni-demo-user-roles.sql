@@ -32,7 +32,8 @@ insert into role (role, description, uuid) values ('bahmni-nurse', 'sample repre
 delete from role_privilege where role = 'bahmni-registration-clerk';
 insert into role_privilege (role, privilege) values ('bahmni-registration-clerk', 'app:registration');
 insert into role_privilege (role, privilege) values ('bahmni-registration-clerk', 'View Users');
-insert into role_privilege (role, privilege) values ('bahmni-registration-clerk', 'View Visit Types');	
+insert into role_privilege (role, privilege) values ('bahmni-registration-clerk', 'View Providers');
+insert into role_privilege (role, privilege) values ('bahmni-registration-clerk', 'View Visit Types');
 insert into role_privilege (role, privilege) values ('bahmni-registration-clerk', 'View Concepts');
 insert into role_privilege (role, privilege) values ('bahmni-registration-clerk', 'View Patients');
 insert into role_privilege (role, privilege) values ('bahmni-registration-clerk', 'Edit Patients');	
@@ -45,8 +46,8 @@ insert into role_privilege (role, privilege) values ('bahmni-registration-clerk'
 insert into role_privilege (role, privilege) values ('bahmni-registration-clerk', 'View Encounters');
 insert into role_privilege (role, privilege) values ('bahmni-registration-clerk', 'Edit Visits');
 -- the following 2 privileges are to gaurd against emrapi encounter transactions save, which should have the 2 below	
-insert into role_privilege (role, privilege) values ('bahmni-doctor', 'Add Encounters');
-insert into role_privilege (role, privilege) values ('bahmni-doctor', 'Edit Encounters');	
+insert into role_privilege (role, privilege) values ('bahmni-registration-clerk', 'Add Encounters');
+insert into role_privilege (role, privilege) values ('bahmni-registration-clerk', 'Edit Encounters');	
 -- end of role-privileges for bahmni-registration-clerk --	
 
 
@@ -54,7 +55,8 @@ insert into role_privilege (role, privilege) values ('bahmni-doctor', 'Edit Enco
 delete from role_privilege where role = 'bahmni-doctor';
 insert into role_privilege (role, privilege) values ('bahmni-doctor', 'app:clinical');
 insert into role_privilege (role, privilege) values ('bahmni-doctor', 'View Users');
-insert into role_privilege (role, privilege) values ('bahmni-doctor', 'View Visit Types');	
+insert into role_privilege (role, privilege) values ('bahmni-doctor', 'View Visit Types');
+insert into role_privilege (role, privilege) values ('bahmni-doctor', 'View Providers');
 insert into role_privilege (role, privilege) values ('bahmni-doctor', 'View Concepts');
 insert into role_privilege (role, privilege) values ('bahmni-doctor', 'View People');
 insert into role_privilege (role, privilege) values ('bahmni-doctor', 'View Visits');
@@ -82,6 +84,7 @@ delete from role_privilege where role = 'bahmni-ipd-clerk';
 insert into role_privilege (role, privilege) values ('bahmni-ipd-clerk', 'app:adt');
 insert into role_privilege (role, privilege) values ('bahmni-ipd-clerk', 'View Users');	
 insert into role_privilege (role, privilege) values ('bahmni-ipd-clerk', 'View Visit Types');
+insert into role_privilege (role, privilege) values ('bahmni-ipd-clerk', 'View Providers');	
 insert into role_privilege (role, privilege) values ('bahmni-ipd-clerk', 'View Concepts');
 insert into role_privilege (role, privilege) values ('bahmni-ipd-clerk', 'View People');
 insert into role_privilege (role, privilege) values ('bahmni-ipd-clerk', 'View Patients');
@@ -103,7 +106,8 @@ insert into role_privilege (role, privilege) values ('bahmni-ipd-clerk', 'Edit E
 delete from role_privilege where role = 'bahmni-nurse';
 insert into role_privilege (role, privilege) values ('bahmni-nurse', 'app:clinical');
 insert into role_privilege (role, privilege) values ('bahmni-nurse', 'View Users');
-insert into role_privilege (role, privilege) values ('bahmni-nurse', 'View Visit Types');	
+insert into role_privilege (role, privilege) values ('bahmni-nurse', 'View Visit Types');
+insert into role_privilege (role, privilege) values ('bahmni-nurse', 'View Providers');
 insert into role_privilege (role, privilege) values ('bahmni-nurse', 'View Concepts');
 insert into role_privilege (role, privilege) values ('bahmni-nurse', 'View People');
 insert into role_privilege (role, privilege) values ('bahmni-nurse', 'View Visits');

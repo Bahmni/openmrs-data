@@ -6,7 +6,7 @@ insert into location_tag ( name, description, creator, date_created, uuid )
 insert into bed_type (bed_type_id, name, display_name, description) values(101, "General Bed", "General Bed", "This is the general bed type");
 insert into bed_type (bed_type_id, name, display_name, description) values(102, "ICU Bed", "ICU Bed", "This is the icu bed type");
 
------------ ICU ----------- 
+-- --------- ICU ----------- 
 -- ward locations
 insert into location ( name, description, creator, date_created, uuid ) 
 	values ( 'ICU','This is an Intensive Care Unit for patients that are in critical condition.','1', '2013-10-05 00:00:00', uuid() );
@@ -56,9 +56,9 @@ insert into bed_location_map (location_id ,row_number, column_number, bed_id)
 insert into bed_location_map (location_id ,row_number, column_number, bed_id) 
 	values ((select location_id from location where name = 'Physical Space for ICU'),'3','7',(select bed_id from bed where bed_number = 'I5'));
  
------------ ICU ----------- 
+-- --------- ICU ----------- 
 
--------------- First ward -------------- 
+-- ------------ First ward -------------- 
 -- ward locations
 insert into location ( name, description, creator, date_created, uuid ) 
 	values ( 'First Ward','This is for the surgical patients that need special care.','1', '2013-10-05 00:00:00', uuid() );
@@ -103,10 +103,10 @@ insert into bed_location_map (location_id ,row_number, column_number, bed_id)
 insert into bed_location_map (location_id ,row_number, column_number, bed_id) 
 	values ((select location_id from location where name = 'Physical Space for First Ward'),'2','5',(select bed_id from bed where bed_number = 'Bed 22'));
 
--------------- first ward -------------- 
+-- ------------ first ward -------------- 
 
 
--------------- second ward -------------- 
+-- ------------ second ward -------------- 
 
 -- ward locations
 insert into location ( name, description, creator, date_created, uuid ) 
@@ -177,9 +177,9 @@ insert into bed_location_map (location_id ,row_number, column_number, bed_id)
 	values ((select location_id from location where name = 'Physical Space for Second Ward'),'2','8',(select bed_id from bed where bed_number = 'Bed 228'));
 
 
--------------- second ward -------------- 
+-- ------------ second ward -------------- 
 
--------------- female ward -------------- 
+-- ------------ female ward -------------- 
 
 -- ward locations
 insert into location ( name, description, creator, date_created, uuid ) 
@@ -200,10 +200,6 @@ insert into location ( name, description, creator, date_created, uuid, parent_lo
 	-- map physical locations to admission location tag
 insert into location_tag_map ( location_id, location_tag_id ) 
 	values ((select location_id from location where name = 'Physical Space for General Ward - Female'), (select location_tag_id from location_tag where name = 'Admission Location'));
-
-
--- bed types
-insert into bed_type (bed_type_id, name, display_name, description) values(101, "General", "General Bed Type", "This is the general bed types");
 
 
 -- beds
@@ -304,9 +300,9 @@ insert into bed_location_map (location_id ,row_number, column_number, bed_id)
 insert into bed_location_map (location_id ,row_number, column_number, bed_id) 
 	values ((select location_id from location where name = 'Physical Space for General Ward - Female'),'5','10',(select bed_id from bed where bed_number = 'GF1'));
 
--------------- female ward -------------- 
+-- ------------ female ward -------------- 
 
--------------- male ward -------------- 
+-- ------------ male ward -------------- 
 
 -- ward locations
 insert into location ( name, description, creator, date_created, uuid ) 
@@ -323,9 +319,6 @@ insert into location ( name, description, creator, date_created, uuid, parent_lo
 			(SELECT location_id as id FROM location where name = 'General Ward - Male')
 			AS tmptable)
 		);
-
--- bed types
-insert into bed_type (bed_type_id, name, display_name, description) values(102, "General", "General Bed Type", "This is the general bed types");
 
 -- beds
 insert into bed (bed_number, bed_type_id) values ('GM1', 101);
@@ -360,70 +353,70 @@ insert into bed (bed_number, bed_type_id) values ('GM29', 101);
 insert into bed (bed_number, bed_type_id) values ('GM30', 101);
 
 -- bed layout
-insert into bed_location_mapping (location_id ,row_number, column_number, bed_id) 
+insert into bed_location_map (location_id ,row_number, column_number, bed_id) 
 	values ((select location_id from location where name = 'Physical Space for General Ward - Male'),'1','1',(select bed_id from bed where bed_number = 'GM5'));
-insert into bed_location_mapping (location_id ,row_number, column_number, bed_id) 
+insert into bed_location_map (location_id ,row_number, column_number, bed_id) 
 	values ((select location_id from location where name = 'Physical Space for General Ward - Male'),'1','2',(select bed_id from bed where bed_number = 'GM6'));
-insert into bed_location_mapping (location_id ,row_number, column_number, bed_id) 
+insert into bed_location_map (location_id ,row_number, column_number, bed_id) 
 	values ((select location_id from location where name = 'Physical Space for General Ward - Male'),'1','3',(select bed_id from bed where bed_number = 'GM7'));
-insert into bed_location_mapping (location_id ,row_number, column_number, bed_id) 
+insert into bed_location_map (location_id ,row_number, column_number, bed_id) 
 	values ((select location_id from location where name = 'Physical Space for General Ward - Male'),'1','4',(select bed_id from bed where bed_number = 'GM8'));
-insert into bed_location_mapping (location_id ,row_number, column_number, bed_id) 
+insert into bed_location_map (location_id ,row_number, column_number, bed_id) 
 	values ((select location_id from location where name = 'Physical Space for General Ward - Male'),'1','5',(select bed_id from bed where bed_number = 'GM9'));
-insert into bed_location_mapping (location_id ,row_number, column_number, bed_id) 
+insert into bed_location_map (location_id ,row_number, column_number, bed_id) 
 	values ((select location_id from location where name = 'Physical Space for General Ward - Male'),'1','6',(select bed_id from bed where bed_number = 'GM10'));
-insert into bed_location_mapping (location_id ,row_number, column_number, bed_id) 
+insert into bed_location_map (location_id ,row_number, column_number, bed_id) 
 	values ((select location_id from location where name = 'Physical Space for General Ward - Male'),'1','7',(select bed_id from bed where bed_number = 'GM11'));
-insert into bed_location_mapping (location_id ,row_number, column_number, bed_id) 
+insert into bed_location_map (location_id ,row_number, column_number, bed_id) 
 	values ((select location_id from location where name = 'Physical Space for General Ward - Male'),'1','8',(select bed_id from bed where bed_number = 'GM12'));
-insert into bed_location_mapping (location_id ,row_number, column_number, bed_id) 
+insert into bed_location_map (location_id ,row_number, column_number, bed_id) 
 	values ((select location_id from location where name = 'Physical Space for General Ward - Male'),'1','9',(select bed_id from bed where bed_number = 'GM13'));
-insert into bed_location_mapping (location_id ,row_number, column_number, bed_id) 
+insert into bed_location_map (location_id ,row_number, column_number, bed_id) 
 	values ((select location_id from location where name = 'Physical Space for General Ward - Male'),'1','10',(select bed_id from bed where bed_number = 'GM14'));
 
-insert into bed_location_mapping (location_id ,row_number, column_number, bed_id) 
+insert into bed_location_map (location_id ,row_number, column_number, bed_id) 
 	values ((select location_id from location where name = 'Physical Space for General Ward - Male'),'2','1',(select bed_id from bed where bed_number = 'GM4'));
 
-insert into bed_location_mapping (location_id ,row_number, column_number, bed_id) 
+insert into bed_location_map (location_id ,row_number, column_number, bed_id) 
 	values ((select location_id from location where name = 'Physical Space for General Ward - Male'),'3','1',(select bed_id from bed where bed_number = 'GM3'));
-insert into bed_location_mapping (location_id ,row_number, column_number, bed_id) 
+insert into bed_location_map (location_id ,row_number, column_number, bed_id) 
 	values ((select location_id from location where name = 'Physical Space for General Ward - Male'),'3','3',(select bed_id from bed where bed_number = 'GM15'));
-insert into bed_location_mapping (location_id ,row_number, column_number, bed_id) 
+insert into bed_location_map (location_id ,row_number, column_number, bed_id) 
 	values ((select location_id from location where name = 'Physical Space for General Ward - Male'),'3','4',(select bed_id from bed where bed_number = 'GM16'));
-insert into bed_location_mapping (location_id ,row_number, column_number, bed_id) 
+insert into bed_location_map (location_id ,row_number, column_number, bed_id) 
 	values ((select location_id from location where name = 'Physical Space for General Ward - Male'),'3','5',(select bed_id from bed where bed_number = 'GM17'));
-insert into bed_location_mapping (location_id ,row_number, column_number, bed_id) 
+insert into bed_location_map (location_id ,row_number, column_number, bed_id) 
 	values ((select location_id from location where name = 'Physical Space for General Ward - Male'),'3','6',(select bed_id from bed where bed_number = 'GM18'));
-insert into bed_location_mapping (location_id ,row_number, column_number, bed_id) 
+insert into bed_location_map (location_id ,row_number, column_number, bed_id) 
 	values ((select location_id from location where name = 'Physical Space for General Ward - Male'),'3','7',(select bed_id from bed where bed_number = 'GM19'));
-insert into bed_location_mapping (location_id ,row_number, column_number, bed_id) 
+insert into bed_location_map (location_id ,row_number, column_number, bed_id) 
 	values ((select location_id from location where name = 'Physical Space for General Ward - Male'),'3','9',(select bed_id from bed where bed_number = 'GM20'));
-insert into bed_location_mapping (location_id ,row_number, column_number, bed_id) 
+insert into bed_location_map (location_id ,row_number, column_number, bed_id) 
 	values ((select location_id from location where name = 'Physical Space for General Ward - Male'),'3','10',(select bed_id from bed where bed_number = 'GM21'));
 
 
-insert into bed_location_mapping (location_id ,row_number, column_number, bed_id) 
+insert into bed_location_map (location_id ,row_number, column_number, bed_id) 
 	values ((select location_id from location where name = 'Physical Space for General Ward - Male'),'4','1',(select bed_id from bed where bed_number = 'GM2'));
-insert into bed_location_mapping (location_id ,row_number, column_number, bed_id) 
+insert into bed_location_map (location_id ,row_number, column_number, bed_id) 
 	values ((select location_id from location where name = 'Physical Space for General Ward - Male'),'4','10',(select bed_id from bed where bed_number = 'GM22'));
 
-insert into bed_location_mapping (location_id ,row_number, column_number, bed_id) 
+insert into bed_location_map (location_id ,row_number, column_number, bed_id) 
 	values ((select location_id from location where name = 'Physical Space for General Ward - Male'),'5','1',(select bed_id from bed where bed_number = 'GM1'));
-insert into bed_location_mapping (location_id ,row_number, column_number, bed_id) 
+insert into bed_location_map (location_id ,row_number, column_number, bed_id) 
 	values ((select location_id from location where name = 'Physical Space for General Ward - Male'),'5','3',(select bed_id from bed where bed_number = 'GM30'));
-insert into bed_location_mapping (location_id ,row_number, column_number, bed_id) 
+insert into bed_location_map (location_id ,row_number, column_number, bed_id) 
 	values ((select location_id from location where name = 'Physical Space for General Ward - Male'),'5','4',(select bed_id from bed where bed_number = 'GM29'));
-insert into bed_location_mapping (location_id ,row_number, column_number, bed_id) 
+insert into bed_location_map (location_id ,row_number, column_number, bed_id) 
 	values ((select location_id from location where name = 'Physical Space for General Ward - Male'),'5','5',(select bed_id from bed where bed_number = 'GM28'));
-insert into bed_location_mapping (location_id ,row_number, column_number, bed_id) 
+insert into bed_location_map (location_id ,row_number, column_number, bed_id) 
 	values ((select location_id from location where name = 'Physical Space for General Ward - Male'),'5','6',(select bed_id from bed where bed_number = 'GM27'));
-insert into bed_location_mapping (location_id ,row_number, column_number, bed_id) 
+insert into bed_location_map (location_id ,row_number, column_number, bed_id) 
 	values ((select location_id from location where name = 'Physical Space for General Ward - Male'),'5','7',(select bed_id from bed where bed_number = 'GM26'));
-insert into bed_location_mapping (location_id ,row_number, column_number, bed_id) 
+insert into bed_location_map (location_id ,row_number, column_number, bed_id) 
 	values ((select location_id from location where name = 'Physical Space for General Ward - Male'),'5','8',(select bed_id from bed where bed_number = 'GM25'));
-insert into bed_location_mapping (location_id ,row_number, column_number, bed_id) 
+insert into bed_location_map (location_id ,row_number, column_number, bed_id) 
 	values ((select location_id from location where name = 'Physical Space for General Ward - Male'),'5','9',(select bed_id from bed where bed_number = 'GM24'));
-insert into bed_location_mapping (location_id ,row_number, column_number, bed_id) 
+insert into bed_location_map (location_id ,row_number, column_number, bed_id) 
 	values ((select location_id from location where name = 'Physical Space for General Ward - Male'),'5','10',(select bed_id from bed where bed_number = 'GM23'));
 
--------------- male ward -------------- 
+-- ------------ male ward -------------- 

@@ -2,7 +2,7 @@ use openmrs;
 
 -- Admission Form
 set @set_concept_id = 0;
-select c.concept_id into @set_concept_id from concept c, concept_name cn where cn.name='ADT' and c.concept_id=cn.concept_id and concept_name_type='SHORT';
+select c.concept_id into @set_concept_id from concept c, concept_name cn where cn.name='Admission' and c.concept_id=cn.concept_id and concept_name_type='SHORT';
 
 set @concept_id = 0;
 set @answer_concept_id = 0;

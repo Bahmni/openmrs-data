@@ -14,22 +14,26 @@ ON DUPLICATE KEY UPDATE description = 'bahmni radiology orders access privilege'
 
 
 -- create sample bahmni roles --
+delete from role_privilege where role = 'bahmni-registration-clerk';
 delete from role where role.role = 'bahmni-registration-clerk';
 insert into role (role, description, uuid) values ('bahmni-registration-clerk', 'sample representation of role for a registration clerk', uuid());
 	
+delete from role_privilege where role = 'bahmni-doctor';
 delete from role where role.role = 'bahmni-doctor';
 insert into role (role, description, uuid) values ('bahmni-doctor', 'sample representation of role for a doctor', uuid());
 	
+delete from role_privilege where role = 'bahmni-ipd-clerk';
 delete from role where role.role = 'bahmni-ipd-clerk';
 insert into role (role, description, uuid) values ('bahmni-ipd-clerk', 'sample representation of role for a ipd clerk doing admission discharge and transfer', uuid());	
 	
+delete from role_privilege where role = 'bahmni-nurse';
 delete from role where role.role = 'bahmni-nurse';
 insert into role (role, description, uuid) values ('bahmni-nurse', 'sample representation of role for a nurse with ability to search and view patient consultation history', uuid());	
 -- end of sample bahmni roles --	
 
 
 -- create role-privileges for bahmni-registration-clerk --
-delete from role_privilege where role = 'bahmni-registration-clerk';
+
 insert into role_privilege (role, privilege) values ('bahmni-registration-clerk', 'app:registration');
 insert into role_privilege (role, privilege) values ('bahmni-registration-clerk', 'View Users');
 insert into role_privilege (role, privilege) values ('bahmni-registration-clerk', 'View Providers');
@@ -52,7 +56,7 @@ insert into role_privilege (role, privilege) values ('bahmni-registration-clerk'
 
 
 -- create role-privileges for bahmni-doctor --
-delete from role_privilege where role = 'bahmni-doctor';
+
 insert into role_privilege (role, privilege) values ('bahmni-doctor', 'app:clinical');
 insert into role_privilege (role, privilege) values ('bahmni-doctor', 'View Users');
 insert into role_privilege (role, privilege) values ('bahmni-doctor', 'View Visit Types');
@@ -80,7 +84,7 @@ insert into role_privilege (role, privilege) values ('bahmni-doctor', 'Edit Enco
 
 
 -- create role-privileges for bahmni-ipd-clerk --
-delete from role_privilege where role = 'bahmni-ipd-clerk';
+
 insert into role_privilege (role, privilege) values ('bahmni-ipd-clerk', 'app:adt');
 insert into role_privilege (role, privilege) values ('bahmni-ipd-clerk', 'View Users');	
 insert into role_privilege (role, privilege) values ('bahmni-ipd-clerk', 'View Visit Types');
@@ -103,7 +107,7 @@ insert into role_privilege (role, privilege) values ('bahmni-ipd-clerk', 'Edit E
 
 
 -- create role-privileges for bahmni-nurse --
-delete from role_privilege where role = 'bahmni-nurse';
+
 insert into role_privilege (role, privilege) values ('bahmni-nurse', 'app:clinical');
 insert into role_privilege (role, privilege) values ('bahmni-nurse', 'View Users');
 insert into role_privilege (role, privilege) values ('bahmni-nurse', 'View Visit Types');

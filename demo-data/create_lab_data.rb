@@ -4,11 +4,12 @@ require 'pg'
 
 @sample_types = {}
 @panels = {}
+@departments = {}
 @tests = {}
 @concept_set_map = {}
 
-# @openelis_conn = PGconn.open(:host => '10.4.3.3', :dbname => "clinlims", :user => "clinlims")
-@openelis_conn = PGconn.open(:dbname => "clinlims", :user => "clinlims")
+@openelis_conn = PGconn.open(:host => '172.18.2.10', :dbname => "clinlims", :user => "clinlims")
+# @openelis_conn = PGconn.open(:dbname => "clinlims", :user => "clinlims")
 
 @result_type_map = {
   "Numeric" => "Numeric",
@@ -22,6 +23,8 @@ require 'pg'
 @file.write("set @concept_name_short_id = 0;\n")
 @file.write("set @concept_name_full_id = 0;\n")
 @file.write("set @laboratory_concept_id = (select concept_id from concept_name where name='Laboratory');\n")
+@file.write("select concept_id INTO @lab_departments_concept_id from concept_name where name='Lab Departments' and concept_name_type = 'FULLY_SPECIFIED' and voided = 0;
+\n")
 
 
 def add_sample_type(concept_name, short_name)
@@ -39,6 +42,14 @@ def add_panel(concept_name, short_name)
   @file.write("call add_concept(@concept_id, @concept_name_short_id, @concept_name_full_id, '#{concept_name}', '#{short_name}', 'N/A', 'LabSet', true);\n")
   @file.write("update concept set uuid = '#{panel_uuid}' where concept_id = @concept_id;\n") if panel_uuid
   @file.write("set @panel_#{@panels[concept_name]} = @concept_id;\n")
+end
+
+def add_department(concept_name, short_name)
+  return if @departments.has_key?(concept_name)
+  @departments[concept_name] = SecureRandom.hex
+  @file.write("call add_concept(@concept_id, @concept_name_short_id, @concept_name_full_id, '#{concept_name}', '#{short_name}', 'N/A', 'ConvSet', true);\n")
+  @file.write("set @department_#{@departments[concept_name]} = @concept_id;\n")
+  add_concept_set("@lab_departments_concept_id", "@department_#{@departments[concept_name]}")
 end
 
 def add_test(concept_name, short_name, datatype)
@@ -71,6 +82,7 @@ end
 
 index = 0
 CSV.foreach "csv/lab_data.csv", :headers => true do |row|
+  department_name = row["Department"]
   sample_type_name = row["Sample TYPE"]
   panel_name = row["PANEL"]
   test_name = row["TEST"]
@@ -82,6 +94,12 @@ CSV.foreach "csv/lab_data.csv", :headers => true do |row|
 
   puts "Adding Sample #{sample_type_name}"
   add_sample_type(sample_type_name, sample_type_name.downcase)
+
+  puts "Adding Department #{department_name} Department"
+  if(!department_name.nil?)
+    department_concept_name = department_name + " Department"
+    add_department(department_concept_name, department_concept_name.downcase)
+  end
 
   puts "Adding Panel #{panel_name}"
   if(!panel_name.nil?)
@@ -97,5 +115,8 @@ CSV.foreach "csv/lab_data.csv", :headers => true do |row|
     add_concept_set("@panel_#{@panels[panel_name]}", "@test_#{@tests[test_name]}")
   elsif (!sample_type_name.nil?)
     add_concept_set("@sample_type_#{@sample_types[sample_type_name]}", "@test_#{@tests[test_name]}")
+  end
+  if(!department_name.nil?)
+    add_concept_set("@department_#{@departments[department_concept_name]}", "@test_#{@tests[test_name]}")
   end
 end

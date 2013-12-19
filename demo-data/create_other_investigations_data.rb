@@ -69,6 +69,17 @@ INSERT INTO concept_word (concept_word_id, concept_id, word, locale, concept_nam
             VALUES (@new_concept_word_id, @#{concept_name.downcase}_concept_id, '#{concept_name}', 'en', @#{concept_name.downcase}_concept_name_id, 1);")
 end
 
+def add_order_type(investigation_name)
+  order_type_name = "#{investigation_name} Order"
+  @file.write("
+-- Create order_type : #{order_type_name}
+
+INSERT INTO order_type (name,description,creator,date_created,uuid) 
+SELECT '#{order_type_name}','An order for #{investigation_name.downcase} tests',1,now(),uuid() FROM (SELECT 1) t
+WHERE NOT EXISTS (SELECT * from order_type where name = '#{order_type_name}');
+\n")
+end
+
 index = 0
 
 CSV.foreach "csv/other_investigations_data.csv", :headers => true do |row|
@@ -96,4 +107,5 @@ end
 
 @investigations.keys.each do |investigation_name|
   add_concept_word(investigation_name)
+  add_order_type(investigation_name)
 end

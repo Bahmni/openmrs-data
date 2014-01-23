@@ -99,7 +99,7 @@ CSV.foreach "csv/other_investigations_data.csv", :headers => true do |row|
   end
 
   unless(test_name.nil?)
-    add_test(test_name, test_name.downcase, "Numeric")
+    add_test(test_name, test_name.downcase, "Text")
     add_concept_set("@investigation_#{@investigations[investigation_name]}", "@test_#{@tests[test_name]}")
     add_concept_set("@category_#{@category[category_name]}", "@test_#{@tests[test_name]}")
   end

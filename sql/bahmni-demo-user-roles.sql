@@ -79,7 +79,11 @@ insert into role_privilege (role, privilege) values ('bahmni-doctor', 'View Orde
 
 -- the following 2 privileges are to gaurd against emrapi encounter transactions save, which should have the 2 below	
 insert into role_privilege (role, privilege) values ('bahmni-doctor', 'Add Encounters');
-insert into role_privilege (role, privilege) values ('bahmni-doctor', 'Edit Encounters');		
+insert into role_privilege (role, privilege) values ('bahmni-doctor', 'Edit Encounters');
+
+-- this is required is the login user is also registered as a provider -- 
+insert into role_privilege (role, privilege) values ('bahmni-doctor', 'Manage Encounter Roles');
+
 -- end of role-privileges for bahmni-doctor --	
 
 
@@ -121,4 +125,37 @@ insert into role_privilege (role, privilege) values ('bahmni-nurse', 'View Patie
 insert into role_privilege (role, privilege) values ('bahmni-nurse', 'app:radiologyOrders');	
 insert into role_privilege (role, privilege) values ('bahmni-nurse', 'View Orders');
 
--- end of role-privileges for bahmni-nurse --			
+-- end of role-privileges for bahmni-nurse --	
+
+-- begin document upload  privilege and roles -- 
+
+insert into privilege (privilege, description, uuid) values ('app:document-upload', 'bahmni document upload access privilege', uuid())
+ON DUPLICATE KEY UPDATE description = 'bahmni document upload access privilege';
+
+delete from role_privilege where role = 'bahmni-document-uploader';
+delete from role where role.role = 'bahmni-document-uploader';
+insert into role (role, description, uuid) values ('bahmni-document-uploader', 'sample representation of role for a document uploader', uuid());
+
+INSERT INTO role_privilege (role, privilege) VALUES ('bahmni-document-uploader', 'app:document-upload');
+INSERT INTO role_privilege (role, privilege) VALUES ('bahmni-document-uploader', 'add observations');
+INSERT INTO role_privilege (role, privilege) VALUES ('bahmni-document-uploader', 'Edit Encounters');
+INSERT INTO role_privilege (role, privilege) VALUES ('bahmni-document-uploader', 'Edit Visits');
+INSERT INTO role_privilege (role, privilege) VALUES ('bahmni-document-uploader', 'View Concepts');
+INSERT INTO role_privilege (role, privilege) VALUES ('bahmni-document-uploader', 'View Encounters');
+INSERT INTO role_privilege (role, privilege) VALUES ('bahmni-document-uploader', 'View Global Properties');
+INSERT INTO role_privilege (role, privilege) VALUES ('bahmni-document-uploader', 'View Identifier Types');
+INSERT INTO role_privilege (role, privilege) VALUES ('bahmni-document-uploader', 'View Location Attribute Types');
+INSERT INTO role_privilege (role, privilege) VALUES ('bahmni-document-uploader', 'View Locations');
+INSERT INTO role_privilege (role, privilege) VALUES ('bahmni-document-uploader', 'View Observations');
+INSERT INTO role_privilege (role, privilege) VALUES ('bahmni-document-uploader', 'View Patient Identifiers');
+INSERT INTO role_privilege (role, privilege) VALUES ('bahmni-document-uploader', 'View Patients');
+INSERT INTO role_privilege (role, privilege) VALUES ('bahmni-document-uploader', 'View People');
+INSERT INTO role_privilege (role, privilege) VALUES ('bahmni-document-uploader', 'View Person Attribute Types');
+INSERT INTO role_privilege (role, privilege) VALUES ('bahmni-document-uploader', 'View Providers');
+INSERT INTO role_privilege (role, privilege) VALUES ('bahmni-document-uploader', 'View Users');
+INSERT INTO role_privilege (role, privilege) VALUES ('bahmni-document-uploader', 'View Visit Attribute Types');
+INSERT INTO role_privilege (role, privilege) VALUES ('bahmni-document-uploader', 'View Visit Types');
+INSERT INTO role_privilege (role, privilege) VALUES ('bahmni-document-uploader', 'View Visits');
+-- this one below might be required if the login user is also registered as a provider. Uncomment if required -- 
+-- insert into role_privilege (role, privilege) values ('bahmni-document-uploader', 'Manage Encounter Roles');
+

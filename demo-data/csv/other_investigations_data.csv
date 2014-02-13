@@ -48,7 +48,7 @@ Radiology,Shoulder,Acromioclavicular joints - Bilateral (X-ray)
 Radiology,Abdomen,Abdomen AP (supine and lateraldecubitus) (X-ray) 
 Radiology,Leg,"Ankle - Left, 3 views (X-ray)"
 Radiology,Leg,"Ankle - Right, 3 views (X-ray)"
-Radiology,Neck,"Neck soft tissue (X-ray)"
+Radiology,Neck,Neck soft tissue (X-ray)
 Radiology,Face,"Temporomandibular joint, bilateral (XRay)"
 Radiology,Head,"Skull, 2 views (X-ray)"
 Endoscopy,Advanced Procedure,Anoscopy
@@ -60,3 +60,65 @@ Endoscopy,Normal Procedure,Enteroscopy
 Endoscopy,Normal Procedure,Endoscopic retrograde cholangiopancreatography (ERCP)
 Endoscopy,Normal Procedure,Laparoscopy
 Endoscopy,Normal Procedure,Sigmoidoscopy
+Radiology,Arm,ARM Clavicle AP
+Radiology,Arm,ARM Scapula AP
+Radiology,Arm,ARM Scapula Lateral
+Radiology,Arm,ARM Shoulder AP
+Radiology,Arm,ARM Shoulder Axial
+Radiology,Arm,ARM Humerus AP
+Radiology,Arm,ARM Humerus Lateral
+Radiology,Arm,ARM Elbow AP
+Radiology,Arm,ARM Elbow Lateral
+Radiology,Arm,ARM Forearm AP
+Radiology,Arm,ARM Forearm Lateral
+Radiology,Arm,ARM Wrist PA
+Radiology,Arm,ARM Wrist AP
+Radiology,Arm,ARM Wrist Lateral
+Radiology,Arm,ARM Scaphoid
+Radiology,Arm,ARM Hand AP
+Radiology,Arm,ARM Hand oblique
+Radiology,Arm,ARM Finger lateral
+Radiology,Leg,LEG Pelvis
+Radiology,Leg,LEG Hip joint AP
+Radiology,Leg,LEG Hip joint Lateral 
+Radiology,Leg,LEG Femur AP
+Radiology,Leg,LEG Femur Lateral 
+Radiology,Leg,LEG Knee AP
+Radiology,Leg,LEG Knee lateral
+Radiology,Leg,LEG Lower leg including knee
+Radiology,Leg,LEG Lower leg including ankle
+Radiology,Leg,LEG Ankle joint
+Radiology,Leg,LEG Foot AP
+Radiology,Leg,LEG Foot oblique
+Radiology,Leg,LEG Foot lateral
+Radiology,Chest,CHEST PA 
+Radiology,Chest,CHEST Lateral 
+Radiology,Chest,CHEST AP
+Radiology,Chest,CHEST apical lordotic
+Radiology,Abdomen,ABDOMEN AP Supine
+Radiology,Abdomen,ABDOMEN PA/AP standing erect
+Radiology,Abdomen,ABDOMEN lateral decubitus
+Radiology,Abdomen,ABDOMEN supine urography
+Radiology,Abdomen,ABDOMEN urinary bladder
+Radiology,Head,HEAD Skull PA
+Radiology,Head,HEAD Skull AP
+Radiology,Head,HEAD Skull semiaxial (Towne’s)
+Radiology,Head,HEAD Skull lateral
+Radiology,Head,HEAD Sinus and face lateral
+Radiology,Head,HEAD Nose lateral
+Radiology,Head,HEAD Mandible AP
+Radiology,Head,HEAD Mandible PA
+Radiology,Head,HEAD Mandible oblique lateral
+Radiology,Spine,SPINE Cervical AP/PA
+Radiology,Spine,SPINE Cervical Lateral
+Radiology,Spine,SPINE Thoracic AP/PA
+Radiology,Spine,SPINE Thoracic Lateral
+Radiology,Spine,SPINE Lumbo-sacral AP/PA
+Radiology,Spine,SPINE Lumbo-sacral Lateral
+Radiology,Special X Rays,BARIUM STUDY Barium swallow
+Radiology,Special X Rays,BARIUM STUDY Barium meal
+Radiology,Special X Rays,BARIUM STUDY Barium Enema
+Radiology,Special X Rays,RGU
+Radiology,Special X Rays,KUB
+Radiology,Other,CT 
+Radiology,Other,MRI

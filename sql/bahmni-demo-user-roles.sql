@@ -52,6 +52,7 @@ insert into role_privilege (role, privilege) values ('bahmni-registration-clerk'
 -- the following 2 privileges are to gaurd against emrapi encounter transactions save, which should have the 2 below	
 insert into role_privilege (role, privilege) values ('bahmni-registration-clerk', 'Add Encounters');
 insert into role_privilege (role, privilege) values ('bahmni-registration-clerk', 'Edit Encounters');	
+insert into role_privilege (role, privilege) values ('bahmni-registration-clerk', 'Manage Encounter Roles');
 -- end of role-privileges for bahmni-registration-clerk --	
 
 
@@ -105,7 +106,8 @@ insert into role_privilege (role, privilege) values ('bahmni-ipd-clerk', 'View V
 	
 -- the following 2 privileges are to gaurd against emrapi encounter transactions save, which should have the 2 below		
 insert into role_privilege (role, privilege) values ('bahmni-ipd-clerk', 'Add Encounters');
-insert into role_privilege (role, privilege) values ('bahmni-ipd-clerk', 'Edit Encounters');							
+insert into role_privilege (role, privilege) values ('bahmni-ipd-clerk', 'Edit Encounters');
+insert into role_privilege (role, privilege) values ('bahmni-ipd-clerk', 'Manage Encounter Roles');	
 -- end of role-privileges for bahmni-ipd-clerk --
 		
 
@@ -124,6 +126,7 @@ insert into role_privilege (role, privilege) values ('bahmni-nurse', 'View Patie
 	
 insert into role_privilege (role, privilege) values ('bahmni-nurse', 'app:radiologyOrders');	
 insert into role_privilege (role, privilege) values ('bahmni-nurse', 'View Orders');
+insert into role_privilege (role, privilege) values ('bahmni-nurse', 'Manage Encounter Roles');	
 
 -- end of role-privileges for bahmni-nurse --	
 
